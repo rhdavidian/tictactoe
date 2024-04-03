@@ -27,7 +27,6 @@ function Gameboard() {
         } else if (board[row][column] === 'X' || board[row][column] === 'O'){
             alert('That spot is taken, choose another');
         };
-        // console.log(renderBoard());
     };
     return { getBoard, markCell, renderBoard };
 };
@@ -37,10 +36,7 @@ function Cell() {
     return { value };
 }
 
-function Gamecontroller (
-    playerOneName = 'Player One',
-    playerTwoName = 'Player Two'
-) {
+function Gamecontroller (playerOneName = 'Player One', playerTwoName = 'Player Two') {
 
     const players = [
         {
@@ -63,10 +59,9 @@ function Gamecontroller (
 
     const announceWinner = () => {
         const row = board.getBoard();
+        //check diagonals
         const diagonalOne = [];
         const diagonalTwo = [];
-
-        //check diagonals
         for (let i = 0; i < 3; i++){
             diagonalOne.push(row[i][i]);
             diagonalTwo.push(row[2-i][i]);
@@ -79,6 +74,7 @@ function Gamecontroller (
 
         //check rows
         row.forEach((element) => {
+            console.log(element.join(''));
             if (element.join('') === 'XXX') {
                 alert(`${players[0].name} Wins!`)
             } else if (element.join('') === 'OOO') {
@@ -87,27 +83,45 @@ function Gamecontroller (
         });
 
         // //check columns 
-        const colArray1 = [];
-        const colArray2 = [];
-        const colArray3 = [];
-            for (let i = 0; i < 3; i++){
-                colArray1.push(row[i][0]);
-                var column1 = colArray1.join('');
-            };     
-            for (let i = 0; i < 3; i++){
-                colArray2.push(row[i][1]);
-                var column2 = colArray2.join('');
-            };
-            for (let i = 0; i < 3; i++){
-                colArray3.push(row[i][2]);
-                var column3 = colArray3.join('');
-            };
-        
-        if (column1 === 'XXX' || column2 === 'XXX' || column3 === 'XXX'){
-            alert(`${players[0].name} Wins!`)
-        } else if (column1 === 'OOO' || column2 === 'OOO' || column3 === 'OOO'){
-            alert(`${players[1].name} Wins!`)
-        }
+        const columnsInOrder = [];
+            for (let i = 0; i < 3; i++) {
+                for (let j = 0; j < 3; j++) {
+                    columnsInOrder.push(row[j][i]);
+                }
+            }
+            const columnOne = columnsInOrder.slice(0,3).join('');
+            const columnTwo = columnsInOrder.slice(3,7).join('');
+            const columnThree = columnsInOrder.slice(7).join('');
+
+            if (columnOne === 'XXX' || columnTwo === 'XXX' || columnThree === 'XXX'){
+                alert(`${players[0].name} Wins!`)
+            } else if (columnOne === 'OOO' || columnTwo === 'OOO' || columnThree === 'OOO'){
+                alert(`${players[1].name} Wins!`)
+            }
+
+            //WORKING CODE FOR NEXT 20 LINES, COMMENTED FOR EXPERIMENTING
+
+              // const colArray1 = [];
+            // const colArray2 = [];
+            // const colArray3 = [];
+            // for (let i = 0; i < 3; i++){
+            //     colArray1.push(row[i][0]);
+            //     var column1 = colArray1.join('');
+            // };     
+            // for (let i = 0; i < 3; i++){
+            //     colArray2.push(row[i][1]);
+            //     var column2 = colArray2.join('');
+            // };
+            // for (let i = 0; i < 3; i++){
+            //     colArray3.push(row[i][2]);
+            //     var column3 = colArray3.join('');
+            // };
+
+        // if (column1 === 'XXX' || column2 === 'XXX' || column3 === 'XXX'){
+        //     alert(`${players[0].name} Wins!`)
+        // } else if (column1 === 'OOO' || column2 === 'OOO' || column3 === 'OOO'){
+        //     alert(`${players[1].name} Wins!`)
+        // }
     };
 
     return { getActivePlayer, switchPlayer, whoseTurn, announceWinner }
