@@ -6,12 +6,22 @@ function Gameboard() {
     for (let i = 0; i < rows; i++){
         board[i] = [];
         for (let j = 0; j < columns; j++)
-        board[i].push(Cell().value);
+        board[i].push('-');
     }
 
     const getBoard = () => board;
     const renderBoard = () => 
            console.table(board);
+
+    const resetBoard = () => {
+        for (let i = 0; i < rows; i++){
+        board[i] = [];
+        for (let j = 0; j < columns; j++)
+        board[i].push('-');
+        }
+        renderBoard();
+        console.log('Winning player goes second.');
+    };
 
     //function to mark a cell with an X or O as a token
     const markCell = (row, column, token) =>  {
@@ -28,24 +38,28 @@ function Gameboard() {
             alert('That spot is taken, choose another');
         };
     };
-    return { getBoard, markCell, renderBoard };
+    return { getBoard, markCell, renderBoard, resetBoard };
 };
 
-function Cell() {
-    let value = '-';
-    return { value };
-}
+//This was borrowed code from the connect four example...perhaps I'll need it later
+// function Cell() {
+//     let value = '-';
+//     return { value };
+// }
 
 function Gamecontroller (playerOneName = 'Player One', playerTwoName = 'Player Two') {
+    //include way for players to name themselves
 
     const players = [
         {
             name: playerOneName,
-            token: 'X'
+            token: 'X',
+            score: 0
         },
         {
             name: playerTwoName,
-            token: 'O'
+            token: 'O',
+            score: 0
         }
     ]
 
@@ -68,17 +82,24 @@ function Gamecontroller (playerOneName = 'Player One', playerTwoName = 'Player T
         }
         if (diagonalOne.join('') === 'XXX' || diagonalTwo.join('') === 'XXX') {
             alert(`${players[0].name} Wins!`)
+            players[0].score++;
+            board.resetBoard();
         } else if (diagonalOne.join('') === 'OOO' || diagonalTwo.join('') === 'OOO'){
             alert(`${players[1].name} Wins!`)
+            players[1].score++;
+            board.resetBoard();
         }
 
         //check rows
         row.forEach((element) => {
-            console.log(element.join(''));
             if (element.join('') === 'XXX') {
-                alert(`${players[0].name} Wins!`)
+                alert(`${players[0].name} Wins!`);
+                players[0].score++;
+                board.resetBoard();
             } else if (element.join('') === 'OOO') {
-                alert(`${players[1].name} Wins!`)
+                alert(`${players[1].name} Wins!`);
+                players[1].score++;
+                board.resetBoard();
             }
         });
 
@@ -90,14 +111,18 @@ function Gamecontroller (playerOneName = 'Player One', playerTwoName = 'Player T
                 }
             }
             const columnOne = columnsInOrder.slice(0,3).join('');
-            const columnTwo = columnsInOrder.slice(3,7).join('');
-            const columnThree = columnsInOrder.slice(7).join('');
+            const columnTwo = columnsInOrder.slice(3,6).join('');
+            const columnThree = columnsInOrder.slice(6).join('');
 
             if (columnOne === 'XXX' || columnTwo === 'XXX' || columnThree === 'XXX'){
-                alert(`${players[0].name} Wins!`)
+                alert(`${players[0].name} Wins!`);
+                players[0].score++;
+                board.resetBoard();
             } else if (columnOne === 'OOO' || columnTwo === 'OOO' || columnThree === 'OOO'){
-                alert(`${players[1].name} Wins!`)
-            }
+                alert(`${players[1].name} Wins!`);
+                players[1].score++;
+                board.resetBoard();
+            };
 
             //WORKING CODE FOR NEXT 20 LINES, COMMENTED FOR EXPERIMENTING
 
@@ -124,9 +149,9 @@ function Gamecontroller (playerOneName = 'Player One', playerTwoName = 'Player T
         // }
     };
 
-    return { getActivePlayer, switchPlayer, whoseTurn, announceWinner }
+    return { getActivePlayer, switchPlayer, whoseTurn, announceWinner, players }
 
-    //include way to name players
+    
 }
 
 const board = Gameboard();
