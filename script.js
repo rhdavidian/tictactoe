@@ -64,6 +64,7 @@ function Gameboard() {
             renderBoard();
             setTimeout(function() {game.announceWinner()}, 100);
             game.switchPlayer();
+            game.setName();
         } else if (board[row][column] === 'X' || board[row][column] === 'O'){
             alert('That spot is taken, choose another');
         };
@@ -93,18 +94,38 @@ function Gamecontroller (playerOneName = 'Player One', playerTwoName = 'Player T
             score: 0
         }
     ]
+
+    let activePlayer = players[0];
+
     const setName = () => {
         const p1Name = document.getElementById('p1Name');
         const p2Name = document.getElementById('p2Name');
         p1Name.innerHTML = players[0].name;
         p2Name.innerHTML = players[1].name;
+        if (activePlayer === players[0]){
+            //add class with green background to active player name
+            p1Name.classList.add('active');
+            p2Name.classList.remove('active');
+       } else {
+            p1Name.classList.remove('active');
+            p2Name.classList.add('active');
+       };
     }
-    setName();
+    const changeP1Name = () => {
+        players[0].name = prompt('Enter Player One Name:');
+        setName();
+    }
+    const changeP2Name = () =>  {
+        players[1].name = prompt('Enter Player Two Name:');
+        setName();
+    }
+
+    // setName();
     const setScore = () => {
         const p1Score = document.getElementById('p1Score');
         const p2Score = document.getElementById('p2Score');
-        p1Score.innerHTML = players[0].score;
-        p2Score.innerHTML = players[1].score;
+        p1Score.innerHTML = 'Score: ' + players[0].score;
+        p2Score.innerHTML = 'Score: ' + players[1].score;
     }
 
     const showScores = () => {
@@ -112,9 +133,8 @@ function Gamecontroller (playerOneName = 'Player One', playerTwoName = 'Player T
         console.log(`${players[1].name}\'s Score: ${players[1].score}`)
     }
 
-    let activePlayer = players[0];
-
     const switchPlayer = () => {
+    
        activePlayer = activePlayer === players[0] ? players[1] : players[0]; 
        console.log(`It is now ${activePlayer.name}\'s turn.`)
     }
@@ -132,11 +152,11 @@ function Gamecontroller (playerOneName = 'Player One', playerTwoName = 'Player T
             diagonalTwo.push(row[2-i][i]);
         }
         if (diagonalOne.join('') === 'XXX' || diagonalTwo.join('') === 'XXX') {
-            alert(`${players[0].name} Wins!`)
+            alert(`${players[0].name} Wins! ${players[1].name} starts next.`)
             players[0].score++;
             board.resetBoard();
         } else if (diagonalOne.join('') === 'OOO' || diagonalTwo.join('') === 'OOO'){
-            alert(`${players[1].name} Wins!`)
+            alert(`${players[1].name} Wins! ${players[0].name} starts next.`)
             players[1].score++;
             showScores();
             board.resetBoard();
@@ -146,12 +166,12 @@ function Gamecontroller (playerOneName = 'Player One', playerTwoName = 'Player T
         //check rows
         row.forEach((element) => {
             if (element.join('') === 'XXX') {
-                alert(`${players[0].name} Wins!`);
+                alert(`${players[0].name} Wins! ${players[1].name} starts next.`);
                 players[0].score++;
                 board.resetBoard();
                 showScores();
             } else if (element.join('') === 'OOO') {
-                alert(`${players[1].name} Wins!`);
+                alert(`${players[1].name} Wins! ${players[0].name} starts next.`);
                 players[1].score++;
                 board.resetBoard();
                 showScores();
@@ -170,12 +190,12 @@ function Gamecontroller (playerOneName = 'Player One', playerTwoName = 'Player T
             const columnThree = columnsInOrder.slice(6).join('');
 
             if (columnOne === 'XXX' || columnTwo === 'XXX' || columnThree === 'XXX'){
-                alert(`${players[0].name} Wins!`);
+                alert(`${players[0].name} Wins! ${players[1].name} starts next.`);
                 players[0].score++;
                 board.resetBoard();
                 showScores();
             } else if (columnOne === 'OOO' || columnTwo === 'OOO' || columnThree === 'OOO'){
-                alert(`${players[1].name} Wins!`);
+                alert(`${players[1].name} Wins! ${players[0].name} starts next.`);
                 players[1].score++;
                 board.resetBoard();
                 showScores();
@@ -183,7 +203,8 @@ function Gamecontroller (playerOneName = 'Player One', playerTwoName = 'Player T
         setScore();
     };
 
-    return { getActivePlayer, switchPlayer, whoseTurn, announceWinner, players, setName, setScore }
+    return { getActivePlayer, switchPlayer, whoseTurn, announceWinner, 
+            players, setName, setScore, changeP1Name, changeP2Name }
 }
 
 

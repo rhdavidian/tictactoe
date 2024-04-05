@@ -15,7 +15,8 @@ body {
     margin: 20px;
 }
 .header,
-.headerTwo {
+.headerTwo,
+.buttonContainer {
     width: 80vw;
     display: flex;
     justify-content: space-between;
@@ -37,6 +38,7 @@ body {
     align-items: center;
     width: 150px;
     height: 150px;
+    font-size: 60pt;
 }
 .cell:hover {
     background-color: rgba(153, 199, 239, 0.747);
@@ -49,9 +51,33 @@ body {
 .bottom {
     border-bottom: 2px solid black;
 }
+
+button,
 .reset {
     margin-top: 70px;
     background-color: coral;
     padding: 8px;
     border-radius: 25px;
+}
+
+#p1Name,
+#p2Name {
+    padding: 8px;
+}
+#p2Score,
+#p1Score {
+    padding: 2px 8px;
+}
+
+.active {
+    background-color: chartreuse;
+    padding: 8px;
+    position: static;
+    border-radius: 25px;
+}
+
+#enterP1Name,
+#enterP2Name {
+    background-color: rgba(85, 105, 216, 0.913);
+    color: rgb(227, 227, 227);
 }

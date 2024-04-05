@@ -42,7 +42,7 @@ function Gameboard() {
 
 function Gamecontroller (playerOneName = 'Player One', playerTwoName = 'Player Two') {
     //include way for players to name themselves
-
+    
     const players = [
         {
             name: playerOneName,
@@ -55,6 +55,11 @@ function Gamecontroller (playerOneName = 'Player One', playerTwoName = 'Player T
             score: 0
         }
     ]
+    const changeP1Name = () => players[0].name = prompt('Enter Player One Name:')
+    const changeP2Name = () =>  players[1].name = prompt('Enter Player Two Name:')
+
+
+
     const showScores = () => {
         console.log(`${players[0].name}\'s Score: ${players[0].score}`)
         console.log(`${players[1].name}\'s Score: ${players[1].score}`)
@@ -125,7 +130,7 @@ function Gamecontroller (playerOneName = 'Player One', playerTwoName = 'Player T
         };
     };
 
-    return { getActivePlayer, switchPlayer, whoseTurn, announceWinner, players }
+    return { getActivePlayer, switchPlayer, whoseTurn, announceWinner, players, changeP1Name, changeP2Name }
 }
 
 const board = Gameboard();
