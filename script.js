@@ -49,6 +49,7 @@ function Gameboard() {
         board[i].push('');
         }
         renderBoard();
+        wiring();
         game.whoseTurn();
     };
 
@@ -92,15 +93,32 @@ function Gamecontroller (playerOneName = 'Player One', playerTwoName = 'Player T
             score: 0
         }
     ]
+    const setName = () => {
+        const p1Name = document.getElementById('p1Name');
+        const p2Name = document.getElementById('p2Name');
+        p1Name.innerHTML = players[0].name;
+        p2Name.innerHTML = players[1].name;
+    }
+    setName();
+    const setScore = () => {
+        const p1Score = document.getElementById('p1Score');
+        const p2Score = document.getElementById('p2Score');
+        p1Score.innerHTML = players[0].score;
+        p2Score.innerHTML = players[1].score;
+    }
+
     const showScores = () => {
         console.log(`${players[0].name}\'s Score: ${players[0].score}`)
         console.log(`${players[1].name}\'s Score: ${players[1].score}`)
     }
+
     let activePlayer = players[0];
+
     const switchPlayer = () => {
        activePlayer = activePlayer === players[0] ? players[1] : players[0]; 
        console.log(`It is now ${activePlayer.name}\'s turn.`)
     }
+
     const getActivePlayer = () => activePlayer;
     const whoseTurn = () => console.log(`It is ${activePlayer.name}\'s turn.`);
 
@@ -162,48 +180,12 @@ function Gamecontroller (playerOneName = 'Player One', playerTwoName = 'Player T
                 board.resetBoard();
                 showScores();
             };
-
-            //WORKING CODE FOR NEXT 20 LINES, COMMENTED FOR EXPERIMENTING
-
-              // const colArray1 = [];
-            // const colArray2 = [];
-            // const colArray3 = [];
-            // for (let i = 0; i < 3; i++){
-            //     colArray1.push(row[i][0]);
-            //     var column1 = colArray1.join('');
-            // };     
-            // for (let i = 0; i < 3; i++){
-            //     colArray2.push(row[i][1]);
-            //     var column2 = colArray2.join('');
-            // };
-            // for (let i = 0; i < 3; i++){
-            //     colArray3.push(row[i][2]);
-            //     var column3 = colArray3.join('');
-            // };
-
-        // if (column1 === 'XXX' || column2 === 'XXX' || column3 === 'XXX'){
-        //     alert(`${players[0].name} Wins!`)
-        // } else if (column1 === 'OOO' || column2 === 'OOO' || column3 === 'OOO'){
-        //     alert(`${players[1].name} Wins!`)
-        // }
+        setScore();
     };
 
-    return { getActivePlayer, switchPlayer, whoseTurn, announceWinner, players }
-
-    
+    return { getActivePlayer, switchPlayer, whoseTurn, announceWinner, players, setName, setScore }
 }
 
-//experimenting with getting everything to update to html
-function Wiring2 () {
-     const rowsInOrder = [];
-            for (let i = 0; i < 3; i++) {
-                for (let j = 0; j < 3; j++) {
-                    rowsInOrder.push(board[j][i]);
-                }
-            }
-
-    return {}
-}
 
 const board = Gameboard();
 const game = Gamecontroller();

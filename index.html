@@ -8,13 +8,13 @@
 </head>
 <body>
     <div class="header">
-        <span>(Player One Name)</span>
+        <span id="p1Name">(Player One Name)</span>
         <h2>Tic-Tac-Toe</h2>
-        <span>(Player Two Name)</span>
+        <span id="p2Name">(Player Two Name)</span>
     </div>
     <div class="headerTwo">
-        <span>(Player One Score)</span>
-        <span>(Player Two Score)</span>
+        <span id="p1Score">0</span>
+        <span id="p2Score">0</span>
     </div>
     <div class="gridContainer">
         <div class="cell right bottom" id="c0" onclick="board.markCell(0,0)"></div>
@@ -27,6 +27,14 @@
         <div class="cell right" id="c7" onclick="board.markCell(2,1)"></div>
         <div class="cell" id="c8" onclick="board.markCell(2,2)"></div>
     </div>
+    <button class="reset" onclick="board.resetBoard()">Reset Board</button>
+
+    <!-- Next Steps: make the score spans reflect the score
+    Make the name spans reflect the names
+    Create a reset button to reset the board; not worth the extra logic to sense a tie (yet)
+    Adjust the font of the X's and O's (bigger)
+    Create input boxes to change names. -->
+
 <script src="script.js"></script>
 </body>
 </html>
