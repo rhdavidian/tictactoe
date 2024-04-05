@@ -41,7 +41,7 @@ body {
     font-size: 60pt;
 }
 .cell:hover {
-    background-color: rgba(153, 199, 239, 0.747);
+    background-color: rgba(164, 203, 236, 0.614);
     border-radius: 2px;
 }
 

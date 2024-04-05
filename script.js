@@ -10,8 +10,7 @@ function Gameboard() {
     }
 
     const getBoard = () => board;
-    const renderBoard = () => 
-           console.table(board);
+    // const renderBoard = () => console.table(board);
     
            //wiring up the array values to the html grid
     const wiring = () => {
@@ -48,7 +47,7 @@ function Gameboard() {
         for (let j = 0; j < columns; j++)
         board[i].push('');
         }
-        renderBoard();
+        // renderBoard(); 
         wiring();
         game.whoseTurn();
     };
@@ -61,7 +60,7 @@ function Gameboard() {
             board[row][column] = token;
             console.log(`That was ${player}\'s turn. Very good.`)
             wiring();
-            renderBoard();
+            // renderBoard();
             setTimeout(function() {game.announceWinner()}, 100);
             game.switchPlayer();
             game.setName();
@@ -70,7 +69,7 @@ function Gameboard() {
         };
     };
 
-    return { getBoard, markCell, renderBoard, resetBoard, wiring };
+    return { getBoard, markCell, resetBoard, wiring };
 };
 
 //This was borrowed code from the connect four example...perhaps I'll need it later
@@ -80,7 +79,6 @@ function Gameboard() {
 // }
 
 function Gamecontroller (playerOneName = 'Player One', playerTwoName = 'Player Two') {
-    //include way for players to name themselves
 
     const players = [
         {
@@ -103,7 +101,6 @@ function Gamecontroller (playerOneName = 'Player One', playerTwoName = 'Player T
         p1Name.innerHTML = players[0].name;
         p2Name.innerHTML = players[1].name;
         if (activePlayer === players[0]){
-            //add class with green background to active player name
             p1Name.classList.add('active');
             p2Name.classList.remove('active');
        } else {
