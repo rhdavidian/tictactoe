@@ -117,7 +117,7 @@ function Gamecontroller (playerOneName = 'Player One', playerTwoName = 'Player T
         setName();
     }
 
-    // setName();
+    setName();
     const setScore = () => {
         const p1Score = document.getElementById('p1Score');
         const p2Score = document.getElementById('p2Score');
