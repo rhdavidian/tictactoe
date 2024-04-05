@@ -4,8 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TicTacToe</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="header">
+        <span>(Player One Name)</span>
+        <h2>Tic-Tac-Toe</h2>
+        <span>(Player Two Name)</span>
+    </div>
+    <div class="headerTwo">
+        <span>(Player One Score)</span>
+        <span>(Player Two Score)</span>
+    </div>
+    <div class="gridContainer">
+        <div class="cell right bottom" id="c0" onclick="board.markCell(0,0)"></div>
+        <div class="cell right bottom" id="c1" onclick="board.markCell(0,1)"></div>
+        <div class="cell bottom" id="c2" onclick="board.markCell(0,2)"></div>
+        <div class="cell right bottom" id="c3" onclick="board.markCell(1,0)"></div>
+        <div class="cell right bottom" id="c4" onclick="board.markCell(1,1)"></div>
+        <div class="cell bottom" id="c5" onclick="board.markCell(1,2)"></div>
+        <div class="cell right" id="c6" onclick="board.markCell(2,0)"></div>
+        <div class="cell right" id="c7" onclick="board.markCell(2,1)"></div>
+        <div class="cell" id="c8" onclick="board.markCell(2,2)"></div>
+    </div>
 <script src="script.js"></script>
 </body>
 </html>
