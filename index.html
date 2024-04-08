@@ -7,39 +7,48 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="header">
-        <span id="p1Name">Player One</span>
-        <h2>Tic-Tac-Toe</h2>
-        <span id="p2Name">Player Two</span>
-    </div>
-    <div class="headerTwo">
-        <span id="p1Score">Score: 0</span>
-        <span id="p2Score">Score: 0</span>
-    </div>
-    <div class="gridContainer">
-        <div class="cell right bottom" id="c0" onclick="board.markCell(0,0)"></div>
-        <div class="cell right bottom" id="c1" onclick="board.markCell(0,1)"></div>
-        <div class="cell bottom" id="c2" onclick="board.markCell(0,2)"></div>
-        <div class="cell right bottom" id="c3" onclick="board.markCell(1,0)"></div>
-        <div class="cell right bottom" id="c4" onclick="board.markCell(1,1)"></div>
-        <div class="cell bottom" id="c5" onclick="board.markCell(1,2)"></div>
-        <div class="cell right" id="c6" onclick="board.markCell(2,0)"></div>
-        <div class="cell right" id="c7" onclick="board.markCell(2,1)"></div>
-        <div class="cell" id="c8" onclick="board.markCell(2,2)"></div>
-    </div>
-    <div class="buttonContainer">
-        <button id="enterP1Name" onclick="game.changeP1Name()">Enter Player One Name</button>
-        <button class="reset" onclick="board.resetBoard()">Reset Board</button>
-        <button id="enterP2Name" onclick="game.changeP2Name()">Enter Player Two Name</button>
-    </div>
-
-    <!-- Next Steps: make the score spans reflect the score
-    Make the name spans reflect the names X
-    Create a reset button to reset the board; not worth the extra logic to sense a tie (yet) X
-    Adjust the font of the X's and O's (bigger) X
-    Create input boxes or prompts to change names 
-    Highlight the active player's name  X -->
+    <div class="mainContainer">
+        <div class="header">
+            <span id="p1Name">Player One</span>
+            <h2>Tic-Tac-Toe</h2>
+            <span id="p2Name">Player Two</span>
+        </div>
+        <div class="headerTwo">
+            <span id="p1Score">Score: 0</span>
+            <span id="p2Score">Score: 0</span>
+        </div>
+        <div class="gridContainer">
+            <div class="cell right bottom" id="c0" onclick="board.markCell(0,0)"></div>
+            <div class="cell right bottom" id="c1" onclick="board.markCell(0,1)"></div>
+            <div class="cell bottom" id="c2" onclick="board.markCell(0,2)"></div>
+            <div class="cell right bottom" id="c3" onclick="board.markCell(1,0)"></div>
+            <div class="cell right bottom" id="c4" onclick="board.markCell(1,1)"></div>
+            <div class="cell bottom" id="c5" onclick="board.markCell(1,2)"></div>
+            <div class="cell right" id="c6" onclick="board.markCell(2,0)"></div>
+            <div class="cell right" id="c7" onclick="board.markCell(2,1)"></div>
+            <div class="cell" id="c8" onclick="board.markCell(2,2)"></div>
+        </div>
+        <!-- <div class="gridContainer">
+            <div class="cell right bottom" id="c0" onclick="tTT.gameboard.markCell(0,0)"></div>
+            <div class="cell right bottom" id="c1" onclick="gameboard.markCell(0,1)"></div>
+            <div class="cell bottom" id="c2" onclick="gameboard.markCell(0,2)"></div>
+            <div class="cell right bottom" id="c3" onclick="gameboard.markCell(1,0)"></div>
+            <div class="cell right bottom" id="c4" onclick="gameboard.markCell(1,1)"></div>
+            <div class="cell bottom" id="c5" onclick="gameboard.markCell(1,2)"></div>
+            <div class="cell right" id="c6" onclick="gameboard.markCell(2,0)"></div>
+            <div class="cell right" id="c7" onclick="gameboard.markCell(2,1)"></div>
+            <div class="cell" id="c8" onclick="gameboard.markCell(2,2)"></div>
+        </div> -->
+        <div class="buttonContainer">
+            <button id="enterP1Name" onclick="game.changeP1Name()">Enter Player One Name</button>
+            <button class="reset" onclick="board.resetBoard()">Reset Board</button>
+            <button id="enterP2Name" onclick="game.changeP2Name()">Enter Player Two Name</button>
+        </div>
+    </div>  
+  
 
 <script src="script.js"></script>
+<!-- <script src="module_script.js"></script> -->
+
 </body>
 </html>

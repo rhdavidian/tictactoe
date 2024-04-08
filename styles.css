@@ -12,8 +12,19 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 20px;
+    width: 100vw;
+    /* margin: auto; */
 }
+
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
 .header,
 .headerTwo,
 .buttonContainer {
@@ -21,24 +32,24 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: -30px 0px 0px 0px;
+    margin: 0px;
 }
 .headerTwo {
-    margin: 0px 0px 70px 0px;
+    margin-bottom: 50px;
 }
 
 .gridContainer {
     display: grid;
-    grid-template-columns: repeat(3, 150px);
+    grid-template-columns: repeat(3, 1fr);
 }
 
 .cell {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 150px;
-    height: 150px;
-    font-size: 60pt;
+    width: 12vw;
+    height: 12vh;
+    font-size: 3.5rem;
 }
 .cell:hover {
     background-color: rgba(164, 203, 236, 0.614);
@@ -54,12 +65,19 @@ body {
 
 button,
 .reset {
-    margin-top: 70px;
     background-color: coral;
     padding: 8px;
     border-radius: 25px;
 }
+button:hover,
+#enterP1Name:hover,
+#enterP2Name:hover {
+    background-color: darkgrey;
+}
 
+.buttonContainer{
+    margin-top: 85px;
+}
 #p1Name,
 #p2Name {
     padding: 8px;
@@ -72,7 +90,6 @@ button,
 .active {
     background-color: chartreuse;
     padding: 8px;
-    position: static;
     border-radius: 25px;
 }
 

@@ -20,7 +20,6 @@ function Gameboard() {
                 rowsInOrder.push(board[i][j]);
             }
         }
-        console.log(rowsInOrder);
         const cell = document.getElementById('c0');
         const cell2 = document.getElementById('c1');
         const cell3 = document.getElementById('c2');
@@ -125,10 +124,10 @@ function Gamecontroller (playerOneName = 'Player One', playerTwoName = 'Player T
         p2Score.innerHTML = 'Score: ' + players[1].score;
     }
 
-    const showScores = () => {
-        console.log(`${players[0].name}\'s Score: ${players[0].score}`)
-        console.log(`${players[1].name}\'s Score: ${players[1].score}`)
-    }
+    // const showScores = () => {
+    //     console.log(`${players[0].name}\'s Score: ${players[0].score}`)
+    //     console.log(`${players[1].name}\'s Score: ${players[1].score}`)
+    // }
 
     const switchPlayer = () => {
     
@@ -155,9 +154,9 @@ function Gamecontroller (playerOneName = 'Player One', playerTwoName = 'Player T
         } else if (diagonalOne.join('') === 'OOO' || diagonalTwo.join('') === 'OOO'){
             alert(`${players[1].name} Wins! ${players[0].name} starts next.`)
             players[1].score++;
-            showScores();
+            // showScores();
             board.resetBoard();
-            showScores();
+            // showScores();
         }
 
         //check rows
@@ -166,12 +165,12 @@ function Gamecontroller (playerOneName = 'Player One', playerTwoName = 'Player T
                 alert(`${players[0].name} Wins! ${players[1].name} starts next.`);
                 players[0].score++;
                 board.resetBoard();
-                showScores();
+                // showScores();
             } else if (element.join('') === 'OOO') {
                 alert(`${players[1].name} Wins! ${players[0].name} starts next.`);
                 players[1].score++;
                 board.resetBoard();
-                showScores();
+                // showScores();
             }
         });
 
@@ -190,12 +189,12 @@ function Gamecontroller (playerOneName = 'Player One', playerTwoName = 'Player T
                 alert(`${players[0].name} Wins! ${players[1].name} starts next.`);
                 players[0].score++;
                 board.resetBoard();
-                showScores();
+                // showScores();
             } else if (columnOne === 'OOO' || columnTwo === 'OOO' || columnThree === 'OOO'){
                 alert(`${players[1].name} Wins! ${players[0].name} starts next.`);
                 players[1].score++;
                 board.resetBoard();
-                showScores();
+                // showScores();
             };
         setScore();
     };
@@ -204,7 +203,5 @@ function Gamecontroller (playerOneName = 'Player One', playerTwoName = 'Player T
             players, setName, setScore, changeP1Name, changeP2Name }
 }
 
-
 const board = Gameboard();
 const game = Gamecontroller();
-
