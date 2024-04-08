@@ -11,8 +11,8 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    width: 100vw;
+    /* height: 100vw; */
+    /* width: 100vw; */
     /* margin: auto; */
 }
 
@@ -22,17 +22,17 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    width: 100vw;
+    width: 80vw;
 }
 
 .header,
 .headerTwo,
 .buttonContainer {
-    width: 80vw;
+    width: 90%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0px;
+    margin: 0;
 }
 .headerTwo {
     margin-bottom: 50px;
@@ -47,8 +47,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-width: calc(11vw + 20px);
-    min-height: calc(11vw + 20px);
+    min-width: calc(14vh + 18px);
+    min-height: calc(14vh + 18px);
     font-size: 3.8rem;
 }
 .cell:hover {
@@ -76,7 +76,7 @@ button:hover,
 }
 
 .buttonContainer{
-    margin-top: 85px;
+    margin-top: 70px;
 }
 #p1Name,
 #p2Name {
