@@ -174,6 +174,7 @@ const tTT = (function() {
             this.setScore();
         }
     };
+    
     gameboard.init();
 
 })();

@@ -47,9 +47,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 12vw;
-    height: 12vh;
-    font-size: 3.5rem;
+    min-width: calc(11vw + 20px);
+    min-height: calc(11vw + 20px);
+    font-size: 3.8rem;
 }
 .cell:hover {
     background-color: rgba(164, 203, 236, 0.614);
