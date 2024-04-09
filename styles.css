@@ -6,23 +6,22 @@
 }
 
 body {
-    background: linear-gradient(yellow, orange);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    /* height: 100vw; */
-    /* width: 100vw; */
-    /* margin: auto; */
-}
-
-.mainContainer {
+    background: linear-gradient(95deg, yellow, orange);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    margin: 30px;
+}
+
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
     width: 80vw;
+    margin: 20px;
 }
 
 .header,
@@ -32,12 +31,14 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0;
+    /* margin: 0; */
 }
 .headerTwo {
     margin-bottom: 50px;
 }
-
+.buttonContainer{
+    margin: 65px 0px 25px 0px;
+}
 .gridContainer {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -75,9 +76,6 @@ button:hover,
     background-color: darkgrey;
 }
 
-.buttonContainer{
-    margin-top: 70px;
-}
 #p1Name,
 #p2Name {
     padding: 8px;
